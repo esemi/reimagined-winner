@@ -12,9 +12,11 @@ $ source venv/bin/activate
 $ pip install poetry
 $ poetry config virtualenvs.create false --local
 $ poetry install
+$ pytest
 ```
 
 ### Todo
 - mvp of UI test
 - action for run tests
 - action for flake8
+- enable allure
