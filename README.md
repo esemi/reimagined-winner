@@ -1,5 +1,8 @@
-reimagined-winner
+Functional testing for web-application.
 ---
+[![wemake-python](https://github.com/esemi/reimagined-winner/actions/workflows/linters.yml/badge.svg?branch=master)](https://github.com/esemi/reimagined-winner/actions/workflows/linters.yml)
+[![Pytest](https://github.com/esemi/reimagined-winner/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/esemi/reimagined-winner/actions/workflows/tests.yml)
+
 
 
 ### Local run
@@ -17,6 +20,11 @@ $ pytest
 
 ### Todo
 - [x] mvp of UI test
-- [ ] action for run tests
-- [ ] action for flake8
+- [x] action for run tests
+- [x] action for flake8
 - [ ] enable allure
+- [ ] real app-hostname
+- [ ] determine priority happy-paths
+- [ ] tests for happy-paths
+- [ ] determine priority error cases
+- [ ] tests for error cases
