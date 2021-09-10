@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.9]
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -30,7 +30,21 @@ jobs:
         poetry --version
         poetry install
 
-    - name: Run headless test
+    - name: Run headless tests
       uses: GabrielBB/xvfb-action@v1
       with:
-        run: poetry run pytest -ra -v tests
+        run: poetry run pytest -sv --alluredir=allure-results --junitxml=report.xml tests --reruns 2 --reruns-delay 1
+
+    - name: Allure report simple
+      uses: esemi/action-allure-report@v0.2.0
+      with:
+        results-dir: allure-results
+
+    - name: Push to github-pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+        target_branch: github-pages
+        build_dir: allure-report
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
