@@ -1,3 +1,5 @@
+"""Basic fixtures for all UI-tests."""
+
 import asyncio
 
 import pytest
@@ -18,15 +20,14 @@ def event_loop():
 @pytest.fixture(scope='session')
 @pytest.mark.asyncio
 async def browser() -> Browser:
-    browser = await launch(**BROWSER_SETTINGS)
-    yield browser
-    await browser.close()
+    instance = await launch(**BROWSER_SETTINGS)
+    yield instance
+    await instance.close()
 
 
 @pytest.fixture()
 @pytest.mark.asyncio
-async def new_page(browser: Browser) -> PageObject:
-    # todo use CustomPage
+async def new_page(browser: Browser) -> PageObject:  # type: ignore   # noqa: WPS442
     page = PageObject(await browser.newPage())
     yield page
     await page.page.close()

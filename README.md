@@ -16,7 +16,7 @@ $ pytest
 ```
 
 ### Todo
-- mvp of UI test
-- action for run tests
-- action for flake8
-- enable allure
+- [x] mvp of UI test
+- [ ] action for run tests
+- [ ] action for flake8
+- [ ] enable allure

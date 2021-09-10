@@ -1,7 +1,11 @@
+"""Page elements' locators and selecting tools."""
+
 from typing import Optional, Any
 
 from pyppeteer import errors
 from pyppeteer.page import Page
+
+from tests.settings import SEARCH_ELEMENT_TIMEOUT
 
 
 class PageObject:
@@ -9,15 +13,18 @@ class PageObject:
         self.page = page
 
     async def open(self, url: str):
+        """Open url in tab."""
         await self.page.goto(url)
 
     async def get_element(self, xpath: str) -> Optional[Any]:
+        """Search element on current page w/ timeout."""
         try:
-            return await self.page.waitForXPath(xpath, visible=True, timeout=5000)
+            return await self.page.waitForXPath(xpath, visible=True, timeout=SEARCH_ELEMENT_TIMEOUT)
         except (errors.PageError, errors.TimeoutError):
             return None
 
     async def has_element(self, xpath: str) -> bool:
+        """Check element exist on current page."""
         return bool(await self.get_element(xpath))
 
     async def goto_login_page(self):
@@ -32,8 +39,8 @@ class PageObject:
         assert demo_link, 'login as demo link was not found'
         await demo_link.click()
 
-    async def is_authenticated(self) -> bool:
-        """Customer is authenticated now."""
+    async def is_authenticated(self) -> bool:  # noqa: WPS217
+        """Check that the customer is authenticated."""
         return all([
             await self.has_element('//a[contains(text(), "выйти")]'),
             await self.has_element('//a[contains(text(), "профиль")]'),

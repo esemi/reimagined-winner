@@ -9,6 +9,10 @@ python = "^3.9"
 pyppeteer = "^0.2.6"
 pytest = "^6.2.5"
 pytest-asyncio = "^0.15.1"
+mypy = "^0.910"
+wemake-python-styleguide = "^0.15.3"
+frozendict = "^2.0.6"
+types-frozendict = "^0.1.6"
 
 [tool.poetry.dev-dependencies]
 

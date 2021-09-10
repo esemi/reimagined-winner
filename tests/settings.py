@@ -1,6 +1,9 @@
-# todo use Path
-APP_START_URL = 'https://dsbot.ru/'
-BROWSER_SETTINGS = {
+"""Basic configuration."""
+
+from frozendict import frozendict
+
+APP_START_URL = 'https://dsbot.ru/'  # todo use Path
+BROWSER_SETTINGS = frozendict({
     'ignoreHTTPSErrors': True,
     # todo use env
     'headless': False,
@@ -9,4 +12,5 @@ BROWSER_SETTINGS = {
         'height': 1060,
     },
     'args': ['--start-maximized'],
-}
+})
+SEARCH_ELEMENT_TIMEOUT = 5000
