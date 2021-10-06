@@ -20,9 +20,9 @@ $ pytest
 ### Todo
 - [x] mvp of UI test
 - [x] action for run tests
-- [x] action for flake8
-- [x] enable allure 1
+- [x] action for flake8 
+- [x] enable allure | 1
 - [x] real app-hostname
 - [x] determine priority happy-paths cases 
-- [ ] tests for empty-form AddPartner 1.5
-- [ ] tests for happy-paths AddPartner 
+- [x] tests for empty-form AddPartner | 3.5 
+- [ ] tests for happy-paths AddPartner | 1.5 + 0.5 + 

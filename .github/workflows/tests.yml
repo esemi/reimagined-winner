@@ -33,7 +33,7 @@ jobs:
     - name: Run headless tests
       uses: GabrielBB/xvfb-action@v1
       with:
-        run: poetry run pytest -sv --alluredir=allure-results --junitxml=report.xml tests --reruns 2 --reruns-delay 1
+        run: poetry run pytest -sv --alluredir=allure-results --junitxml=report.xml tests
 
     - name: Allure report simple
       uses: esemi/action-allure-report@v0.2.0

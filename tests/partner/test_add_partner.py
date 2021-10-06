@@ -1,16 +1,16 @@
-"""Example of TestCase for login functionality on dsbot.ru."""
+"""TestCase for create partner functionality."""
+import uuid
 
 import allure
 import pytest
 
 from tests.form_utils import BLANK_SYMBOL
-from tests.page import PartnerPage
 from tests.partner.schemas import Partner
 
 
 @pytest.mark.asyncio
 @allure.title('Admin try create empty partner.')
-async def test_required_fields(partner_page: PartnerPage):
+async def test_required_fields(partner_page):
     with allure.step('Fill in the new partner form without data'):
         await partner_page.open_add_form()
 
@@ -27,16 +27,27 @@ async def test_required_fields(partner_page: PartnerPage):
                 f'create form field {name} does not have error message'
 
 
-# @pytest.mark.asyncio
-# @allure.title('Admin can add a partner to the system.')
-# async def test_happy_path(partner_page: PartnerPage):
-#     # todo clear db before
-#     with allure.step('Fill in the new partner form with the correct data'):
-#         await partner_page.open_add_form()
-#         await partner_page.fill_create_form(
-#             # todo impl
-#         )
-#
-#     with allure.step('Partner was added successfully'):
-#         assert not await partner_page.locate_create_form_button(), 'create form button found'
-#         # todo assert await partner_page.partner_exist_in_list(partner_id), 'partner not found in list'
+@pytest.mark.asyncio
+@allure.title('Admin can add a partner to the system.')
+async def test_happy_path(partner_page, valid_partner_cf: str):
+    uniq_partner_uid = f'autotest descrizione example {uuid.uuid4().hex}'
+    # todo clear db before
+    with allure.step('Fill in the new partner form with the correct data'):
+        await partner_page.open_add_form()
+        await partner_page.fill_create_form(Partner(
+            descrizione=uniq_partner_uid,
+            indirizzo='autotest indirizzo example',
+            comune='autotest comune example',
+
+            cap='12345',
+            provincia='AA',
+            cf=valid_partner_cf,
+        ))
+
+    with allure.step('Partner was added successfully'):
+        assert not await partner_page.locate_create_form_button(), 'create form button found'
+        partner_rows = await partner_page.locate_partners_list()
+        assert len(partner_rows) > 0, 'Not found partners on table'
+
+        partner_as_text = await partner_page.partner_list_row_to_text(partner_rows[0])
+        assert uniq_partner_uid in partner_as_text, f'Not found partner {uniq_partner_uid} in first table row'
