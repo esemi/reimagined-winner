@@ -11,6 +11,9 @@ from tests.settings import SEARCH_ELEMENT_TIMEOUT
 class PageObject:
     def __init__(self, page: Page):
         self.page = page
+        self.page.setExtraHTTPHeaders({
+            'Authorization': 'Basic NHRoZGltOnY0bHRpY2Vl',
+        })
 
     async def open(self, url: str):
         """Open url in tab."""

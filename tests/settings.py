@@ -2,11 +2,10 @@
 
 from frozendict import frozendict
 
-APP_START_URL = 'https://dsbot.ru/'  # todo use Path
+APP_START_URL = 'http://et2test.4th-dimension.cz/admin/'
 BROWSER_SETTINGS = frozendict({
     'ignoreHTTPSErrors': True,
-    # todo use env
-    'headless': False,
+    'headless': False,  # todo use env
     'defaultViewport': {
         'width': 1980,
         'height': 1060,
