@@ -7,8 +7,8 @@ BROWSER_SETTINGS = frozendict({
     'ignoreHTTPSErrors': True,
     'headless': False,  # todo use env
     'defaultViewport': {
-        'width': 1980,
-        'height': 1060,
+        'width': 1920,
+        'height': 1200,
     },
     'args': ['--start-maximized'],
 })

@@ -21,9 +21,8 @@ $ pytest
 - [x] mvp of UI test
 - [x] action for run tests
 - [x] action for flake8
-- [x] enable allure
-- [ ] real app-hostname
-- [ ] determine priority happy-paths cases
-- [ ] tests for happy-paths
-- [ ] determine priority error cases
-- [ ] tests for error cases
+- [x] enable allure 1
+- [x] real app-hostname
+- [x] determine priority happy-paths cases 
+- [ ] tests for empty-form AddPartner 1.5
+- [ ] tests for happy-paths AddPartner 

@@ -6,8 +6,8 @@ import pytest
 from pyppeteer import launch
 from pyppeteer.browser import Browser
 
-from tests.page import PageObject
-from tests.settings import BROWSER_SETTINGS
+from tests.page import MainPage, PartnerPage
+from tests.settings import BROWSER_SETTINGS, APP_START_URL
 
 
 @pytest.fixture(scope='session')
@@ -27,7 +27,16 @@ async def browser() -> Browser:
 
 @pytest.fixture()
 @pytest.mark.asyncio
-async def new_page(browser: Browser) -> PageObject:  # type: ignore   # noqa: WPS442
-    page = PageObject(await browser.newPage())
+async def main_page(browser: Browser) -> MainPage:
+    page = await MainPage.init(await browser.newPage())
+    await page.open(APP_START_URL)
     yield page
-    await page.page.close()
+    await page.close()
+
+
+@pytest.fixture()
+@pytest.mark.asyncio
+async def partner_page(main_page) -> PartnerPage:
+    page = await main_page.goto_partners_page()
+    yield page
+    await page.close()
