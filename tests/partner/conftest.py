@@ -18,6 +18,4 @@ def valid_partner_cf() -> str:
 @pytest.fixture()
 @pytest.mark.asyncio
 async def partner_page(main_page):
-    page = await main_page.goto_partners_page()
-    yield page
-    await page.close()
+    return await main_page.goto_partners_page()

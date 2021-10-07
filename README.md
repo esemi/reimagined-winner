@@ -25,4 +25,4 @@ $ pytest
 - [x] real app-hostname
 - [x] determine priority happy-paths cases 
 - [x] tests for empty-form AddPartner | 3.5 
-- [ ] tests for happy-paths AddPartner | 1.5 + 0.5 + 
+- [x] tests for happy-paths AddPartner | 3
