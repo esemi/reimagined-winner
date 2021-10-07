@@ -10,12 +10,15 @@ ignore =
     S101, # assert
 
     D101, # Missing docstring in public class
+    D102,
     D103, # Missing docstring in public function
     D104, # Missing docstring in public package
     D107, # Missing docstring in __init__
 
     WPS115, # Found upper-case constant in a class
     WPS306, # Found class without a base class: PageObject
+    WPS305, # Found `f` string
+    WPS214, # Found too many methods
 
     I001,
     I005,

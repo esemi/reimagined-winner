@@ -28,7 +28,7 @@ async def browser() -> Browser:
 
 @pytest.fixture()
 @pytest.mark.asyncio
-async def main_page(browser: Browser) -> 'MainPage':
+async def main_page(browser: Browser):  # noqa: WPS442
     page = await MainPage.init(await browser.newPage())
     await page.open(APP_START_URL)
     yield page
@@ -37,6 +37,7 @@ async def main_page(browser: Browser) -> 'MainPage':
 
 class MainPage(PageObject):
     """Index administrator page."""
+
     async def goto_partners_page(self) -> 'PartnerPage':
         menu_link = await self.get_element('//a/span[text()="Partners"]')
         assert menu_link, 'partner menu link not found'

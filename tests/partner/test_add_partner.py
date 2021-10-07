@@ -15,7 +15,7 @@ async def test_required_fields(partner_page):
         await partner_page.open_add_form()
 
         empty_partner = Partner(
-            **{name: BLANK_SYMBOL for name in Partner.required_fields()}
+            **{name: BLANK_SYMBOL for name in Partner.required_fields()},
         )
         await partner_page.fill_create_form(empty_partner)
 
@@ -23,19 +23,20 @@ async def test_required_fields(partner_page):
         assert await partner_page.locate_create_form_button(), 'create form button not found'
         for name in Partner.required_fields():
             error_message = await partner_page.locate_create_form_error_text(name)
-            assert 'This value should not be blank' in error_message, \
+            assert 'This value should not be blank' in error_message, (
                 f'create form field {name} does not have error message'
+            )
 
 
 @pytest.mark.asyncio
 @allure.title('Admin can add a partner to the system.')
 async def test_happy_path(partner_page, valid_partner_cf: str):
-    uniq_partner_uid = f'autotest descrizione example {uuid.uuid4().hex}'
+    uniq_partner_uid = uuid.uuid4().hex
     # todo clear db before
     with allure.step('Fill in the new partner form with the correct data'):
         await partner_page.open_add_form()
         await partner_page.fill_create_form(Partner(
-            descrizione=uniq_partner_uid,
+            descrizione=f'autotest descrizione example {uniq_partner_uid}',
             indirizzo='autotest indirizzo example',
             comune='autotest comune example',
 
@@ -47,7 +48,7 @@ async def test_happy_path(partner_page, valid_partner_cf: str):
     with allure.step('Partner was added successfully'):
         assert not await partner_page.locate_create_form_button(), 'create form button found'
         partner_rows = await partner_page.locate_partners_list()
-        assert len(partner_rows) > 0, 'Not found partners on table'
+        assert len(partner_rows), 'Not found partners on table'
 
         partner_as_text = await partner_page.partner_list_row_to_text(partner_rows[0])
         assert uniq_partner_uid in partner_as_text, f'Not found partner {uniq_partner_uid} in first table row'

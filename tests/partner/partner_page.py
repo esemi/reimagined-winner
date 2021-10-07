@@ -28,13 +28,20 @@ class PartnerPage(PageObject):
         name: str,
     ) -> Tuple[Optional[ElementHandle], Optional[ElementHandle]]:
         selector = f'Partner_{name}'
+        field_box = None
         field_input = await self.get_element(f'//input[@id="{selector}"]')
-        field_box = None if not field_input else (await field_input.xpath('./parent::div'))[0]
+        if field_input:
+            field_box = (await field_input.xpath('./parent::div'))[0]
         return field_input, field_box
 
-    async def locate_create_form_error_text(self, name: str):
+    async def locate_create_form_error_text(self, name: str) -> Optional[str]:
         _, box = await self.locate_create_form_field(name)
-        return await box.querySelectorEval('div', 'node => node.innerText')
+        if not box:
+            return None
+
+        return await self.get_element_content(
+            await box.querySelector('div'),
+        )
 
     async def fill_create_form(
         self,

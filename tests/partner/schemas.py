@@ -1,3 +1,5 @@
+"""Partner entities."""
+
 from dataclasses import dataclass
 from typing import Set
 

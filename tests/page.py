@@ -10,6 +10,7 @@ from tests.settings import SEARCH_ELEMENT_TIMEOUT
 
 class PageObject:
     """Basic page locators and selecting methods."""
+
     def __init__(self, page: Page):
         self._page = page
 
@@ -46,6 +47,3 @@ class PageObject:
     async def has_element(self, xpath: str) -> bool:
         """Check element exist on current page."""
         return bool(await self.get_element(xpath))
-
-    async def make_screenshot(self):
-        await self._page.screenshot(path='/tmp/tmp.png')
