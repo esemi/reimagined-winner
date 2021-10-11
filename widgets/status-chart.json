@@ -1,0 +1,21 @@
+[ {
+  "uid" : "60692ba8e65068ee",
+  "name" : "Admin can add a partner to the system.",
+  "time" : {
+    "start" : 1633971987126,
+    "stop" : 1633971993282,
+    "duration" : 6156
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4c98d944218c8150",
+  "name" : "Admin try create empty partner.",
+  "time" : {
+    "start" : 1633971985204,
+    "stop" : 1633971986262,
+    "duration" : 1058
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

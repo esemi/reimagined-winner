@@ -1,0 +1,39 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "children" : [ {
+    "name" : "tests.partner",
+    "children" : [ {
+      "name" : "test_add_partner",
+      "children" : [ {
+        "name" : "Admin try create empty partner.",
+        "uid" : "4c98d944218c8150",
+        "parentUid" : "152ab15eba25de08a8e4ca5043bdf7cc",
+        "status" : "passed",
+        "time" : {
+          "start" : 1633971985204,
+          "stop" : 1633971986262,
+          "duration" : 1058
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Admin can add a partner to the system.",
+        "uid" : "60692ba8e65068ee",
+        "parentUid" : "152ab15eba25de08a8e4ca5043bdf7cc",
+        "status" : "passed",
+        "time" : {
+          "start" : 1633971987126,
+          "stop" : 1633971993282,
+          "duration" : 6156
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "152ab15eba25de08a8e4ca5043bdf7cc"
+    } ],
+    "uid" : "937edb97bdc095bc4996e9ddde7cebf6"
+  } ],
+  "name" : "suites"
+}

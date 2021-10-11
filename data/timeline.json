@@ -1,0 +1,39 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "children" : [ {
+    "name" : "fv-az204-473",
+    "children" : [ {
+      "name" : "2939-MainThread",
+      "children" : [ {
+        "name" : "Admin try create empty partner.",
+        "uid" : "4c98d944218c8150",
+        "parentUid" : "119ce79749567af5eef3975577c92c74",
+        "status" : "passed",
+        "time" : {
+          "start" : 1633971985204,
+          "stop" : 1633971986262,
+          "duration" : 1058
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Admin can add a partner to the system.",
+        "uid" : "60692ba8e65068ee",
+        "parentUid" : "119ce79749567af5eef3975577c92c74",
+        "status" : "passed",
+        "time" : {
+          "start" : 1633971987126,
+          "stop" : 1633971993282,
+          "duration" : 6156
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "119ce79749567af5eef3975577c92c74"
+    } ],
+    "uid" : "933c6931c937858455dd51739b732299"
+  } ],
+  "name" : "timeline"
+}
